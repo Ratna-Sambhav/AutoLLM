@@ -62,5 +62,5 @@ The lack of a specialized no-code AI platform for non-tech personnel to train th
 
 ## Scope and Preliminary Design
 
-![Screenshot](deployment_pipeline.png)
+![Screenshot](/images/inference_pipeline.png)
 
