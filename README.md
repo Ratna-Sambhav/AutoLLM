@@ -62,5 +62,5 @@ The lack of a specialized no-code AI platform for non-tech personnel to train th
 
 ## Scope and Preliminary Design
 
-Our AI platform will have a clean and responsive frontend, a highly scalable backend using container orchestration, and an integrated database. The system will be deployed on AWS.
+
 
