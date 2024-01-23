@@ -54,7 +54,12 @@ The lack of a specialized no-code AI platform for non-tech personnel to train th
 
 ## Scope and Preliminary Design
 
+### Fine-Tuning Architecture
 ![Screenshot](fine_tuning_pipeline.png)
+
+### Deployment Architecture
 ![Screenshot](deployment_pipeline.png)
-![Screenshot](inference_pipeline.png)
+
+### Inferencing Architecture
+![Screenshot](inference_pipeline.jpg)
 
