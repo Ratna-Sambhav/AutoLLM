@@ -6,7 +6,7 @@
 
 ## Background and Motivation
 
-With the large-scale industry adoption of large language models, there is a high demand to train custom LLMs on private data. Proprietary LLM APIs often lack data privacy and secure deployment, making it challenging for non-tech companies to adopt this technology. This project aims to bridge this gap by introducing a "no-code platform" that allows non-tech professionals to easily train and deploy their own LLMs, ensuring data privacy and cost-effectiveness.
+With the large-scale industry adoption of large language models, there is a high demand to train custom LLMs on private data. Proprietary LLM APIs often lack data privacy and secure deployment, making it challenging for non-tech companies to adopt this technology. This project aims to bridge this gap by introducing a UI that allows non-tech professionals to easily train and deploy their own LLMs, ensuring data privacy and cost-effectiveness.
 
 ## Scope and Objectives
 
