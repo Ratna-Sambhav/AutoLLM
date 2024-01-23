@@ -28,25 +28,37 @@ The lack of a specialized no-code AI platform for non-tech personnel to train th
 ## Data Sources
 
 **Source of Data:**
-- <a href=https://huggingface.co/datasets/TIGER-Lab/MathInstruct>Math-Instruct</a> and <a href=https://huggingface.co/datasets/akjindal53244/Arithmo-Data>Arithmo-data  </a> datasets from HuggingFace (Open source datasets).
-- EDGAR Database (Accessible on www.sec.gov/edgar).
+- <a href=https://huggingface.co/datasets/TIGER-Lab/MathInstruct>Math-Instruct</a> and <a href=https://huggingface.co/datasets/akjindal53244/Arithmo-Data>Arithmo-data  </a> datasets from HuggingFace. These are open source datasets.
+- <a href=https://www.sec.gov/edgar/search/>EDGAR Database</a>: An online repository available for public access. Access to the EDGAR database is available for free on the SEC's official website (www.sec.gov/edgar).
 
 **Description of Datasets:**
-- Math-Instruct and Arithmo-data: Question-Answer datasets with queries and responses in chain-of-thought format.
-- EDGAR Database: A comprehensive online repository of corporate financial filings, accessible through APIs.
+- <a href=https://huggingface.co/datasets/TIGER-Lab/MathInstruct>Math-Instruct</a> and <a href=https://huggingface.co/datasets/akjindal53244/Arithmo-Data>Arithmo-data  </a> datasets are basically instruction based Question-Answer datasets which contain queries and responses in chain-of-thought format.
+- <a href=https://www.sec.gov/edgar/search/>EDGAR Database</a>(Electronic Data Gathering, Analysis, and Retrieval) is a comprehensive online repository maintained by the U.S. Securities and Exchange Commission (SEC) that provides public access to corporate financial filings, such as annual reports and registration statements. It can be accessed by using APIs.
 
 **Key Attributes:**
-- Math-Instruct: MCQ type math-related questions and answers.
-- Arithmo-data: Algebra-based questions and solutions.
-- EDGAR Database: Text-based large set of documents.
+- <a href=https://huggingface.co/datasets/TIGER-Lab/MathInstruct>Math-Instruct</a>:
+  Instruction: MCQ type math related questions with instruction. 
+  Output: Answer to the question with a chain-of-thought style solution.
+
+- <a href=https://huggingface.co/datasets/akjindal53244/Arithmo-Data>Arithmo-data  </a>:
+  Question: Algebra based questions.
+  Answer: COmplete solution to the question in a chain-of-thought pattern.
+
+- <a href=https://www.sec.gov/edgar/search/>EDGAR Database</a>:
+  Text-based large set of documents.
 
 **Relevance to the Project:**
-- Math-Instruct and Arithmo-data for fine-tuning LLMs with mathematical skills.
-- EDGAR Database to validate the correct working of the RAG pipeline.
+- Math-Instruct and Arithmo-data will be used for fine-tuning the model using our architecture to ultimately deploy an LLM with pure mathematical skills.
+- EDGAR Database: This will mainly validate the correct working of our RAG pipeline. Retrieval of the correct document from the database and correct response, all based on a single query will showcase an versatility of our platform and make it useful for real world scenarios.
 
 ## Data Handling after Building the Website and Pipelines
 
-Throughout the three stages of model training, users can choose data from provided lists or upload their own. For Unsupervised and Supervised learning, users can upload documents or choose from predefined sets.
+  Data Handling after building our website and all the necessary pipelines:
+  Throughout the three stages of model training users can either choose data from our provided list or provide their own.
+  For Unsupervised: User uploads documents (.pdf, .txt, .doc) or compressed files, text will be automatically extracted from there, processed and used for training.
+  For Supervised: Users can either choose from the provided list (list from huggingface/kaggle) or upload their own dataset. 
+  RLHF/RLAIF: Either choose from the defined sets or upload.
+
 
 ## Scope and Preliminary Design
 
