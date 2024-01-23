@@ -2,15 +2,7 @@
 
 <div align="center"><h2> An AI Platform for Fine-Tuning, Deploying, and Inferencing on LLMs with RAG</h2></div>
 
-**Project Lead:** Rahul Dave
-
-**Authors:**
-- Ratna Sambhav (sambhav.ratna@gmail.com)
-- Prayash Panda (pkpanda234@gmail.com)
-- Arjun Benoy (arjunbinoy.vishnu@gmail.com)
-- Joyson Chacko George (joysoncgeorge2001@gmail.com)
-- Praveen Kumar Vijayan
-- Tarun Thakur (tarunsinghthakur.rst@gmail.com)
+**Project Lead:** Dr. Rahul Dave
 
 ## Background and Motivation
 
@@ -62,5 +54,7 @@ The lack of a specialized no-code AI platform for non-tech personnel to train th
 
 ## Scope and Preliminary Design
 
-![Screenshot](/images/inference_pipeline.png)
+![Screenshot](fine_tuning_pipeline.png)
+![Screenshot](deployment_pipeline.png)
+![Screenshot](inference_pipeline.png)
 
