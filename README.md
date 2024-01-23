@@ -28,7 +28,7 @@ The lack of a specialized no-code AI platform for non-tech personnel to train th
 ## Data Sources
 
 **Source of Data:**
-- Math-Instruct and Arithmo-data datasets from HuggingFace (Open source datasets).
+- <a href=https://huggingface.co/datasets/TIGER-Lab/MathInstruct>Math-Instruct</a> and <a href=https://huggingface.co/datasets/akjindal53244/Arithmo-Data>Arithmo-data  </a> datasets from HuggingFace (Open source datasets).
 - EDGAR Database (Accessible on www.sec.gov/edgar).
 
 **Description of Datasets:**
