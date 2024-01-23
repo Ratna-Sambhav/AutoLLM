@@ -1,6 +1,6 @@
-<div align="center"><h1>AutoLLM</h1></div>
+# AutoLLM
 
-<div align="center"><h2> An AI Platform for Fine-Tuning, Deploying, and Inferencing on LLMs with RAG</h2></div>
+## An AI Platform for Fine-Tuning, Deploying, and Inferencing on LLMs with RAG
 
 **Project Lead:** Dr. Rahul Dave
 
