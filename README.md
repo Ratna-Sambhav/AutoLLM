@@ -1,5 +1,5 @@
 # AutoLLM
-
+(A Weekend Project)
 ## An AI Platform for Fine-Tuning, Deploying, and Inferencing on LLMs with RAG
 
 **Project Lead:** Dr. Rahul Dave
