@@ -46,7 +46,7 @@ def make_query(query):
   vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
   storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
-  model = PaLM(api_key="AIzaSyD-gUG------------")
+  model = PaLM(api_key="AIzaSyD-gUGR1747OmPBrTEBk2dJBo2yBLzlBQ8")
   service_context = ServiceContext.from_defaults(llm=model)
 
   # load your index from stored vectors
