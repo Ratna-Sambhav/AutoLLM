@@ -4,13 +4,16 @@ FROM ubuntu
 WORKDIR /rag_system
 
 # Update and install python
-sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get install -y python3-pip
+RUN apt-get -y update && apt-get -y upgrade && apt-get install -y python3-pip
 
 # Copy the current directory contents into the container at /rag_system
-COPY . /rag_system/
+COPY ./requirements.txt /rag_system/
 
 # Install any needed packages specified in requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+# Copy app.py
+COPY ./rag_system_app.py /rag_system/
 
 # Expose the port to where api call will be made
 EXPOSE 8080
