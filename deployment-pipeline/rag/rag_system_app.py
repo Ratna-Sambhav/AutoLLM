@@ -16,16 +16,18 @@ app = FastAPI()
 def download_s3_dir(key_id, secret_key, bucket, folder):
   # A function to download all the files in its original directory format from provided s3 bucket (with a defined user having access_keys)
   s3 = boto3.resource('s3', aws_access_key_id=key_id, aws_secret_access_key=secret_key)
-  bucket = s3.Bucket('sample-aws-bucket-llamaindex')
-  if not os.path.exists('./data/'):
-    os.makedirs('./data/')
+  bucket = s3.Bucket(bucket)
+
+  data_directory = './' + folder + '/'
+  if not os.path.exists(data_directory):
+    os.makedirs(data_directory)
   for obj in bucket.objects.filter(Prefix = folder):
     if not obj.key.endswith('/'): 
-      if not os.path.exists('./data/' + '/'.join(obj.key.split('/')[:-1])):
-        os.makedirs('./data/' + '/'.join(obj.key.split('/')[:-1]))
-      if not os.path.exists(f'./data/{obj.key}'):
+      if not os.path.exists(data_directory + '/'.join(obj.key.split('/')[:-1])):
+        os.makedirs(data_directory + '/'.join(obj.key.split('/')[:-1]))
+      if not os.path.exists(data_directory + f'{obj.key}'):
         print(f'Downloading {obj.key}')
-        bucket.download_file(obj.key, f'./data/{obj.key}')
+        bucket.download_file(obj.key, data_directory + f'{obj.key}')
 
 def create_new_vdb(folder_name):
   # Function to create a vector database of files taken from the provided local directory
@@ -64,9 +66,10 @@ def s3_sync(data: dict):
   aws_secret_access_key = data.get('secret_access_key')
   bucket_name = data.get('bucket_name')
   folder = data.get('folder_name', '')
+  local_folder_name = 'data' if folder == '' else folder
 
   download_s3_dir(aws_access_key_id, aws_secret_access_key, bucket_name, folder)
-  create_new_vdb(folder_name='data')
+  create_new_vdb(folder_name=local_folder_name)
   return {"Message": "Sync Finished"}
 
 @app.get("/makequery/")
