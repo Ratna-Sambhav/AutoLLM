@@ -5,3 +5,4 @@ chromadb==0.4.22
 pypdf
 transformers
 torch
+google-generativeai
