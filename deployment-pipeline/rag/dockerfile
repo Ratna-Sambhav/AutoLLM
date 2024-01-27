@@ -3,6 +3,9 @@ FROM ubuntu
 # Set the working directory in the container
 WORKDIR /rag_system
 
+# Update and install python
+sudo apt-get -y update && sudo apt-get -y upgrade && sudo apt-get install -y python3-pip
+
 # Copy the current directory contents into the container at /rag_system
 COPY . /rag_system/
 
