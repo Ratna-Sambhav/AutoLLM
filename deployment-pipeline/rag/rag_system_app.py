@@ -11,6 +11,9 @@ import boto3
 import chromadb
 import os
 
+embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
+model = PaLM(api_key="AIzaSyD-gUGR1747OmPBrTEBk2dJBo2yBLzlBQ8")
+
 app = FastAPI()
 
 def download_s3_dir(key_id, secret_key, bucket, folder):
@@ -38,8 +41,8 @@ def create_new_vdb(folder_name):
 
   vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
   storage_context = StorageContext.from_defaults(vector_store=vector_store)
-  embed_model = HuggingFaceEmbedding(model_name="BAAI/bge-small-en-v1.5")
-  service_context = ServiceContext.from_defaults(embed_model=embed_model, chunk_size=512)
+  
+  service_context = ServiceContext.from_defaults(embed_model=embed_model, llm=model, chunk_size=512)
   index = VectorStoreIndex.from_documents(documents, service_context=service_context, storage_context=storage_context, show_progress=True)
 
 def make_query(query):
@@ -49,8 +52,7 @@ def make_query(query):
   vector_store = ChromaVectorStore(chroma_collection=chroma_collection)
   storage_context = StorageContext.from_defaults(vector_store=vector_store)
 
-  model = PaLM(api_key="AIzaSyD-gUGR1747OmPBrTEBk2dJBo2yBLzlBQ8")
-  service_context = ServiceContext.from_defaults(llm=model)
+  service_context = ServiceContext.from_defaults(embed_model=embed_model, llm=model, chunk_size=512)
 
   # load your index from stored vectors
   index = VectorStoreIndex.from_vector_store(
