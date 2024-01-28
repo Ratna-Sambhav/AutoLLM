@@ -1,10 +1,10 @@
 ## How to use:
 
-1. Install docker and run the following docker image:\n
+- Install docker and run the following docker image:
    docker run -p 80:6000 ratna1sambhav/autollm-backend:0.1
-3. Access the api endpoint on localhost:80
-4. Following are the endpoint:
-   i. localhost:80/deploy_rag/
+- Access the api endpoint on localhost:80
+  - Following are the endpoint:
+    - localhost:80/deploy_rag/
       payload: {
          "access_key": "ADSWW...",               //Required: IAM Role with access to ec2 instance
          "secret_access_key": "cwedwe33232...",    //Required: IAM Role with access to ec2 instance
@@ -14,7 +14,7 @@
          "instance_category": "spot"     //optional: Be default: spot, Options: ["on-demand", "spot"]
    }
 
-   ii. localhost:80/fine_tune_model/
+    - localhost:80/fine_tune_model/
         payload: similar to above. //Still in progress
 
 # AutoLLM
