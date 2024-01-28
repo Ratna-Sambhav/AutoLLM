@@ -4,7 +4,7 @@
    - docker run -p 80:6000 ratna1sambhav/autollm-backend:0.1
 - Access the api endpoint on localhost:80
   - Following are the endpoint:
-    - ** localhost:80/deploy_rag/ <br />
+    - #### localhost:80/deploy_rag/ <br />
        payload: { <br>
           "access_key": "ADSWW...",               //Required: IAM Role with access to ec2 instance  <br />
           "secret_access_key": "cwedwe33232...",    //Required: IAM Role with access to ec2 instance  <br />
@@ -14,7 +14,7 @@
           "instance_category": "spot"     //optional: Be default: spot, Options: ["on-demand", "spot"]  <br />
    }
 
-    - ** localhost:80/fine_tune_model/  <br />
+    - #### localhost:80/fine_tune_model/  <br />
           payload: similar to above. //Still in progress
 
 # AutoLLM
