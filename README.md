@@ -14,6 +14,7 @@
           "instance_type": "t2.large",    //optional: Be default: t2.large (8GB RAM), Options: [//all aws ec2 instance types, choose larger based on the size of embedding model]  <br />
           "instance_category": "spot"     //optional: Be default: spot, Options: ["on-demand", "spot"]  <br />
    }
+  
   </pre>
 
     - #### localhost:80/fine_tune_model/  <br />
