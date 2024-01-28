@@ -216,16 +216,3 @@ def terminate_instance(access_key, secret_access_key, instance_id_to_terminate):
 if __name__ == "__main__":
 
   pass
-
-    # access_key = ''
-    # secret_access_key = ''
-    # region_name = 'ap-south-1'
-    # ebs_volume = 8
-    # instance_type = 't2.micro'
-    # instance_category = 'spot'
-
-    # cmds = ["sudo apt-get -y update", "sudo apt-get -y upgrade", "sudo apt-get install -y python3-pip"]
-    # public_ip = "13.235.9.241"
-    # pkey_path = '/content/my_key.pem'
-    # username = 'ubuntu'
-    # stdout_list = send_cmd_pem(public_ip, username, pkey_path, cmds)
