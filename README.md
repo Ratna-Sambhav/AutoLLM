@@ -13,9 +13,9 @@
           "ebs_volume": 30,               //optional: Be default: 30GB, Options: [//Any value, based on how large the data you have]  <br />
           "instance_type": "t2.large",    //optional: Be default: t2.large (8GB RAM), Options: [//all aws ec2 instance types, choose larger based on the size of embedding model]  <br />
           "instance_category": "spot"     //optional: Be default: spot, Options: ["on-demand", "spot"]  <br />
-   }
+      }
   
-  </pre>
+    </pre>
 
     - #### localhost:80/fine_tune_model/  <br />
           payload: similar to above. //Still in progress
