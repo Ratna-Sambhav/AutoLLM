@@ -1,9 +1,9 @@
 ## How to use:
 
-1. Install docker and run the following docker image:
+1. Install docker and run the following docker image:\n
    docker run -p 80:6000 ratna1sambhav/autollm-backend:0.1
-2. Access the api endpoint on localhost:80
-3. Following are the endpoint:
+3. Access the api endpoint on localhost:80
+4. Following are the endpoint:
    i. localhost:80/deploy_rag/
       payload: {
          "access_key": "ADSWW...",               //Required: IAM Role with access to ec2 instance
