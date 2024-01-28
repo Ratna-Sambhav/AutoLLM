@@ -18,8 +18,9 @@
     </pre>
 
     - #### localhost:80/fine_tune_model/  <br />
+    <pre>
           payload: similar to above. //Still in progress
-
+    </pre>
 # AutoLLM
 
 ## An AI Platform for Fine-Tuning, Deploying, and Inferencing on LLMs with RAG
