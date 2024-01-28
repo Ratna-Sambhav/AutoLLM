@@ -5,6 +5,7 @@
 - Access the api endpoint on localhost:80
   - Following are the endpoint:
     - #### localhost:80/deploy_rag/ <br />
+    <pre>
        payload: { <br>
           "access_key": "ADSWW...",               //Required: IAM Role with access to ec2 instance  <br />
           "secret_access_key": "cwedwe33232...",    //Required: IAM Role with access to ec2 instance  <br />
@@ -13,6 +14,7 @@
           "instance_type": "t2.large",    //optional: Be default: t2.large (8GB RAM), Options: [//all aws ec2 instance types, choose larger based on the size of embedding model]  <br />
           "instance_category": "spot"     //optional: Be default: spot, Options: ["on-demand", "spot"]  <br />
    }
+  </pre>
 
     - #### localhost:80/fine_tune_model/  <br />
           payload: similar to above. //Still in progress
