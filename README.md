@@ -4,18 +4,18 @@
    - docker run -p 80:6000 ratna1sambhav/autollm-backend:0.1
 - Access the api endpoint on localhost:80
   - Following are the endpoint:
-    - localhost:80/deploy_rag/
-      - payload: {
-         - "access_key": "ADSWW...",               //Required: IAM Role with access to ec2 instance
-         - "secret_access_key": "cwedwe33232...",    //Required: IAM Role with access to ec2 instance
-         - "region_name": "ap-south-1",     //optional: Be default: ap-south-1, Options: [//any regions of aws]
-         - "ebs_volume": 30,               //optional: Be default: 30GB, Options: [//Any value, based on how large the data you have]
-         - "instance_type": "t2.large",    //optional: Be default: t2.large (8GB RAM), Options: [//all aws ec2 instance types, choose larger based on the size of embedding model]
-         - "instance_category": "spot"     //optional: Be default: spot, Options: ["on-demand", "spot"]
+    - localhost:80/deploy_rag/ <br>
+       payload: { <br>
+          "access_key": "ADSWW...",               //Required: IAM Role with access to ec2 instance  <br>
+          "secret_access_key": "cwedwe33232...",    //Required: IAM Role with access to ec2 instance  <br>
+          "region_name": "ap-south-1",     //optional: Be default: ap-south-1, Options: [//any regions of aws]  <br>
+          "ebs_volume": 30,               //optional: Be default: 30GB, Options: [//Any value, based on how large the data you have]  <br>
+          "instance_type": "t2.large",    //optional: Be default: t2.large (8GB RAM), Options: [//all aws ec2 instance types, choose larger based on the size of embedding model]  <br>
+          "instance_category": "spot"     //optional: Be default: spot, Options: ["on-demand", "spot"]  <br>
    }
 
-    - localhost:80/fine_tune_model/
-        - payload: similar to above. //Still in progress
+    - localhost:80/fine_tune_model/  <br>
+          payload: similar to above. //Still in progress
 
 # AutoLLM
 
