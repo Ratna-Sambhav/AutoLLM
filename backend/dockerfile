@@ -1,0 +1,23 @@
+FROM ubuntu
+
+# Set the working directory in the container
+WORKDIR /AutoLLM_backend
+
+# Update and install python
+RUN apt-get -y update && apt-get -y upgrade && apt-get install -y python3-pip
+
+# Copy the current directory contents into the container at /rag_system
+COPY ./requirements.txt /AutoLLM_backend/
+
+# Install any needed packages specified in requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+# Copy app.py
+COPY ./backend_app.py /AutoLLM_backend/
+COPY ./ec2_functions.py /AutoLLM_backend/
+
+# Expose the port to where api call will be made
+EXPOSE 6000
+
+# Run app.py when the container launches
+CMD ["uvicorn", "backend_app:app", "--host", "0.0.0.0", "--port", "6000"]
