@@ -1,7 +1,7 @@
 ## How to use:
 
 - Install docker and run the following docker image:
-   - docker run -p 80:6000 ratna1sambhav/autollm-backend:0.1
+    <pre>  docker run -p 80:6000 ratna1sambhav/autollm-backend:0.1   </pre>
 - Access the api endpoint on localhost:80
   - Following are the endpoint:
     - #### localhost:80/deploy_rag/ <br />
