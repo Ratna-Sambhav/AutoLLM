@@ -79,13 +79,15 @@ def fine_tune(data: dict):
     pkey_path = data.get("pkey_path")
   
   ## Send commands to start the rag system with necessary settings
+  json_train_data = json.dumps(data.get('training_info'))
   username = 'ubuntu' # By default for ec2
   command_list = [
     "sudo apt-get -y update && sudo apt-get -y upgrade",  
     "sudo apt-get install -y python3-pip",
     "sudo apt install -y docker.io",
     "sudo systemctl start docker && sudo systemctl enable docker",
-    "sudo docker run -p 80:8080 ai_tuners_fine_tune_model"
+    f"echo {json_data} > ./prompt.json",
+    "sudo docker run -v $(pwd):/tuning_app/ ai_tuners_fine_tune_axolotl"
     ]
   stdout = send_cmd_pem(public_ip, username, pkey_path, command_list)  
   
