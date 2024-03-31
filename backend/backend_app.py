@@ -91,7 +91,7 @@ def fine_tune(data: dict):
     "sudo apt-get install -y python3-pip",
     "sudo apt install -y docker.io",
     "sudo systemctl start docker && sudo systemctl enable docker",
-    f"echo {json_train_data} > ./prompt.json",
+    f"echo '{json_train_data}' > ./prompt.json",
     "tmux new -d -s fine_tune_session",
     f"tmux send-keys -t fine_tune_session 'sudo docker run -e WANDB_API_KEY={wandb_api_key} -v $(pwd):/tuning_app/ ratna1sambhav/ai_tuners_axolotl_ft:0.1' Enter",
     ]
