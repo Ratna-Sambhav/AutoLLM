@@ -84,6 +84,7 @@ def fine_tune(data: dict):
   
   ## Send commands to start the rag system with necessary settings
   json_train_data = json.dumps(data.get('training_info'))
+  wandb_api_key = data.get('WANDB_API_KEY', '')
   username = 'ubuntu' # By default for ec2
   command_list = [
     "sudo apt-get -y update && sudo apt-get -y upgrade",  
@@ -91,10 +92,10 @@ def fine_tune(data: dict):
     "sudo apt install -y docker.io",
     "sudo systemctl start docker && sudo systemctl enable docker",
     f"echo {json_train_data} > ./prompt.json",
-    "sudo tmux new -d -s fine_tune_session",
-    "sudo tmux send-keys -t fine_tune_session 'sudo docker run -v $(pwd):/tuning_app/ ai_tuners_fine_tune_axolotl' Enter",
+    "tmux new -d -s fine_tune_session",
+    f"tmux send-keys -t fine_tune_session 'sudo docker run -e WANDB_API_KEY={wandb_api_key} -v $(pwd):/tuning_app/ ratna1sambhav/ai_tuners_axolotl_ft:0.1' Enter",
     ]
   #'sudo docker run -v $(pwd):/tuning_app/ ai_tuners_fine_tune_axolotl'
   stdout = send_cmd_pem(public_ip, username, pkey_path, command_list)  
   
-  return {"Logs": stdout, "Instructions": f"Your API has been deployed on the ec2 instance. Use {public_ip} to send your requests. Use /connects3/ endpoint to send your s3 bucket 'bucket_name', access key 'access_key_id' and secret access key 'secret_access_key' of the IAM Role that has full access to the s3 bucket and folder name 'folder_name' inside the s3 bucket which you want to ask questions on."}
+  return {"Logs": stdout, "Instructions": f"Model Training has been initiated. Please login to your instance and run 'tmux ls' and then attach to the tmux session"}
