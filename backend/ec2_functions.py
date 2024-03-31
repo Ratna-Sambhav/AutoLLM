@@ -11,6 +11,7 @@ def create_ec2_instance(config_json):
   instance_type = config_json.get('instance_type', 't2.micro')
   instance_category = config_json.get('instance_category', 'spot')
   instance_name = config_json.get('instance_name', 'my_instance'+ str(random.randint(1, 10000)))
+  instance_ami_id = config_json.get('instance_ami_id')
 
   # Define ec2 client and resource
   ec2_client = boto3.client('ec2', region_name=region_name, aws_access_key_id=access_key, aws_secret_access_key=secret_access_key)
@@ -85,7 +86,7 @@ def create_ec2_instance(config_json):
                   },
               },
           ],
-          'ImageId': 'ami-03f4878755434977f',
+          'ImageId': instance_ami_id,
           'InstanceType': instance_type,
           'KeyName': keypair_name,
       },
@@ -125,7 +126,7 @@ def create_ec2_instance(config_json):
                 },
             },
         ],
-        ImageId='ami-03f4878755434977f', #ubuntu
+        ImageId=instance_ami_id, #ubuntu
         InstanceType=instance_type,
         KeyName=keypair_name,
         SecurityGroupIds=[
