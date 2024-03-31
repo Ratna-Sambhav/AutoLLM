@@ -102,8 +102,7 @@ def fine_tune(data: dict):
     "mkdir prompt_dir",
     f"echo '{json_train_data}' > ./prompt_dir/prompt.json",
     "tmux new -d -s fine_tune_session",
-    "tmux send-keys -t fine_tune_session 'pip3 install packaging && pip3 install flash-attn --no-build-isolation && pip3 install torch torchvision torchaudio
-'"
+    "tmux send-keys -t fine_tune_session 'pip3 install packaging && pip3 install torch torchvision torchaudio && pip3 install flash-attn --no-build-isolation' Enter",
     "tmux send-keys -t fine_tune_session 'sudo docker run -e WANDB_API_KEY={wandb_api_key} -v $(pwd)/prompt_dir/:/prompt_dir/ ratna1sambhav/ai_tuners_axolotl_ft:0.1' Enter",
     ]
   #'sudo docker run -v $(pwd):/tuning_app/ ai_tuners_fine_tune_axolotl'
