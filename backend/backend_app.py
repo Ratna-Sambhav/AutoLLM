@@ -87,7 +87,7 @@ def fine_tune(data: dict):
     pkey_path = data.get("pkey_path")
   
   ## Send commands to setup the instance and start fine-tuning
-  with open('./install_cuda.sh', 'r') as f:
+  with open('./cuda_driver_install.sh', 'r') as f:
     cuda_driver_commands_txt = f.read()
     f.close()
     
