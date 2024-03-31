@@ -93,6 +93,11 @@ def fine_tune(data: dict):
     
   json_train_data = json.dumps(data.get('training_info'))
   wandb_api_key = data.get('WANDB_API_KEY', '')
+  BUCKET_NAME = data.get('BUCKET_NAME')
+  NEW_DIR_NAME = data.get('NEW_DIR_NAME')
+  ACCESS_KEY_ID = data.get('ACCESS_KEY_ID')
+  SECRET_ACCESS_KEY = data.get('SECRET_ACCESS_KEY')
+  
   username = 'ubuntu' # By default for ec2
   command_list = [
     "sudo apt-get -y update && sudo apt-get -y upgrade",  
@@ -103,7 +108,7 @@ def fine_tune(data: dict):
     f"echo '{json_train_data}' > ./prompt_dir/prompt.json",
     "tmux new -d -s fine_tune_session",
     "tmux send-keys -t fine_tune_session 'pip3 install packaging && pip3 install torch torchvision torchaudio && pip3 install flash-attn --no-build-isolation' Enter",
-    "tmux send-keys -t fine_tune_session 'sudo docker run -e WANDB_API_KEY={wandb_api_key} -v $(pwd)/prompt_dir/:/prompt_dir/ ratna1sambhav/ai_tuners_axolotl_ft:0.1' Enter",
+    f"tmux send-keys -t fine_tune_session 'sudo docker run -e WANDB_API_KEY={wandb_api_key} -e BUCKET_NAME={BUCKET_NAME} -e NEW_DIR_NAME={NEW_DIR_NAME} -e ACCESS_KEY_ID={ACCESS_KEY_ID} -e SECRET_ACCESS_KEY={SECRET_ACCESS_KEY} -v $(pwd)/prompt_dir/:/prompt_dir/ ratna1sambhav/ai_tuners_axolotl_ft:0.1' Enter",
     ]
   #'sudo docker run -v $(pwd):/tuning_app/ ai_tuners_fine_tune_axolotl'
   stdout = send_cmd_pem(public_ip, username, pkey_path, command_list)  
