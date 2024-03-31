@@ -89,7 +89,6 @@ def fine_tune(data: dict):
   ## Send commands to setup the instance and start fine-tuning
   with open('./cuda_driver_install.sh', 'r') as f:
     cuda_driver_commands_txt = f.read()
-    f.close()
     
   json_train_data = json.dumps(data.get('training_info'))
   wandb_api_key = data.get('WANDB_API_KEY', '')
@@ -99,6 +98,7 @@ def fine_tune(data: dict):
     "sudo apt-get install -y python3-pip",
     "sudo apt install -y docker.io",
     "sudo systemctl start docker && sudo systemctl enable docker",
+    "mkdir prompt_dir",
     f"echo '{json_train_data}' > ./prompt_dir/prompt.json",
     "tmux new -d -s fine_tune_session",
     # Install nvidia drivers
