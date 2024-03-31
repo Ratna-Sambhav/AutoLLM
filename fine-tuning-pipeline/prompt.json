@@ -1,0 +1,15 @@
+{
+    "action": "preprocess",
+    "yml_file_path": "../axolotl/examples/phi/phi-qlora.yml",
+    "dataset_name": "loubnabnl/math_college",
+    "dataset_type": null,
+    "output_filename": "new_yaml.yml",
+    "yml_updates": {
+        "system_prompt": "",
+        "field_system": "",
+        "field_instruction": "prompt_college",
+        "field_output": "completion",
+        "format": "<<sys>> prompt_college <</sys>>",
+        "no_input_format": "<<sys>> prompt_college <</sys>>"
+    }
+}
