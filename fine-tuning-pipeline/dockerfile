@@ -21,7 +21,7 @@ COPY . /tuning_app/
 
 # Create a script to run the last two commands
 RUN mkdir -p /training_sh/
-RUN echo '#!/bin/bash\npython3 yml_creator.py ./prompt_dir/prompt.json\npython3 -m axolotl.cli.train ./new_yaml.yml\npython3 s3_uploader.py ./ $BUCKET_NAME $NEW_DIR_NAME --access_key_id $ACCESS_KEY_ID --secret_access_key $SECRET_ACCESS_KEY' > /training_sh/run_commands.sh
+RUN echo '#!/bin/bash\npython3 yml_creator.py /prompt_dir/prompt.json\npython3 -m axolotl.cli.train ./new_yaml.yml\npython3 s3_uploader.py ./ $BUCKET_NAME $NEW_DIR_NAME --access_key_id $ACCESS_KEY_ID --secret_access_key $SECRET_ACCESS_KEY' > /training_sh/run_commands.sh
 RUN chmod +x /training_sh/run_commands.sh
 
 # Set the entrypoint to the script
