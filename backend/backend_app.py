@@ -86,7 +86,11 @@ def fine_tune(data: dict):
     public_ip = data.get("public_ip")
     pkey_path = data.get("pkey_path")
   
-  ## Send commands to start the rag system with necessary settings
+  ## Send commands to setup the instance and start fine-tuning
+  with open('./install_cuda.sh', 'r') as f:
+    cuda_driver_commands_txt = f.read()
+    f.close()
+    
   json_train_data = json.dumps(data.get('training_info'))
   wandb_api_key = data.get('WANDB_API_KEY', '')
   username = 'ubuntu' # By default for ec2
@@ -96,6 +100,9 @@ def fine_tune(data: dict):
     "sudo apt install -y docker.io",
     "sudo systemctl start docker && sudo systemctl enable docker",
     f"echo '{json_train_data}' > ./prompt.json",
+    # Install nvidia drivers
+    f"echo '{cuda_driver_commands_txt}' > ./cuda_driver_install.sh",
+    "./cuda_driver_install.sh",
     "tmux new -d -s fine_tune_session",
     f"tmux send-keys -t fine_tune_session 'sudo docker run -e WANDB_API_KEY={wandb_api_key} -v $(pwd):/tuning_app/ ratna1sambhav/ai_tuners_axolotl_ft:0.1' Enter",
     ]
