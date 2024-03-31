@@ -17,6 +17,7 @@ def deploy_rag(data: dict):
     ebs_volume = data.get('ebs_volume', 28)
     instance_type = data.get('instance_type', 't2.large')
     instance_category = data.get('instance_category', 'spot')
+    instance_ami_id = data.get('instance_ami_id', 'ami-007020fd9c84e18c7')
 
     instance_id, public_ip, public_dns, pkey_path = create_ec2_instance({
       "region_name":region_name, 
@@ -25,7 +26,8 @@ def deploy_rag(data: dict):
       "ebs_volume":ebs_volume, 
       "instance_type":instance_type, 
       "instance_category":instance_category,
-      "instance_name": "deployed_llm_"+str(random.randint(1, 10000))
+      "instance_name": "deployed_llm_"+str(random.randint(1, 10000)),
+      "instance_ami_id": instance_ami_id
       })
   else:
     public_ip = data.get("public_ip")
@@ -68,6 +70,7 @@ def fine_tune(data: dict):
     ebs_volume = data.get('ec2_volume', 28)
     instance_type = data.get('instance_type', 't2.micro')
     instance_category = data.get('instance_category', 'spot')
+    instance_ami_id = data.get('instance_ami_id', 'ami-007020fd9c84e18c7')
 
     instance_id, public_ip, public_dns, pkey_path = create_ec2_instance({
       "region_name":region_name, 
@@ -76,7 +79,8 @@ def fine_tune(data: dict):
       "ebs_volume":ebs_volume, 
       "instance_type":instance_type, 
       "instance_category":instance_category,
-      "instance_name": "fine_tune_"+str(random.randint(1, 10000))
+      "instance_name": "fine_tune_"+str(random.randint(1, 10000)),
+      "instance_ami_id": instance_ami_id
       })
   else:
     public_ip = data.get("public_ip")
