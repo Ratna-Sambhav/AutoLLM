@@ -1,4 +1,4 @@
-FROM nvidia/cuda:12.3.2-devel-ubuntu22.04
+FROM nvcr.io/nvidia/pytorch:24.03-py3
 
 # Set the working directory in the container
 WORKDIR /tuning_app
@@ -8,13 +8,12 @@ VOLUME /tuning_app/
 
 # Install any needed packages specified in requirements.txt
 RUN apt-get update -y && apt-get upgrade -y && apt install --no-install-recommends -y build-essential python3 python3-pip && apt-get install -y git
-RUN pip3 install argparse boto3 ruamel.yaml torch==2.2.0
+RUN pip3 install argparse boto3 ruamel.yaml
 RUN git clone https://github.com/OpenAccess-AI-Collective/axolotl /axolotl
 RUN pip3 install packaging
 
 # Change directory to /axolotl and install dependencies
 RUN cd /axolotl && pip3 install -e '.[flash-attn,deepspeed]'
-RUN cd /axolotl && pip3 install -e '.'
 
 # Copy the current directory contents into the container at /tuning_app
 COPY . /tuning_app/
