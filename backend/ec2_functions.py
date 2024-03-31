@@ -10,6 +10,7 @@ def create_ec2_instance(config_json):
   ebs_volume = config_json.get('ebs_volume', 8)
   instance_type = config_json.get('instance_type', 't2.micro')
   instance_category = config_json.get('instance_category', 'spot')
+  instance_name = config_json.get('instance_name', 'my_instance'+ str(random.randint(1, 10000)))
 
   # Define ec2 client and resource
   ec2_client = boto3.client('ec2', region_name=region_name, aws_access_key_id=access_key, aws_secret_access_key=secret_access_key)
@@ -62,7 +63,7 @@ def create_ec2_instance(config_json):
 
 
   ## EC2 Creation
-  instance_name = 'rag_application' + str(random.randint(1, 10000))
+  # instance_name = 'rag_application' + str(random.randint(1, 10000))
   # Create an ec2 instance of necessary configuration
   if instance_category == 'spot':
     response = ec2_client.request_spot_instances(
