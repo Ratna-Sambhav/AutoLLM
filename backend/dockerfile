@@ -18,6 +18,7 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 # Copy app.py
 COPY ./backend_app.py /AutoLLM_backend/
 COPY ./ec2_functions.py /AutoLLM_backend/
+COPY ./cuda_driver_install.sh /AutoLLM_backend/
 
 # Expose the port to where api call will be made
 EXPOSE 6000
