@@ -104,6 +104,7 @@ def fine_tune(data: dict):
     # Install nvidia drivers
     f"tmux send-keys -t fine_tune_session  'echo {cuda_driver_commands_txt} > ./cuda_driver_install.sh' Enter",
     "tmux send-keys -t fine_tune_session './cuda_driver_install.sh' Enter",
+    "tmux send-keys -t fine_tune_session 'chmod +x ./cuda_driver_install.sh' Enter",
     f"tmux send-keys -t fine_tune_session 'sudo docker run -e WANDB_API_KEY={wandb_api_key} -v $(pwd):/tuning_app/ ratna1sambhav/ai_tuners_axolotl_ft:0.1' Enter",
     ]
   #'sudo docker run -v $(pwd):/tuning_app/ ai_tuners_fine_tune_axolotl'
