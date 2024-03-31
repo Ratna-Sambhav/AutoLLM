@@ -84,11 +84,12 @@ def fine_tune(data: dict):
       })
   else:
     public_ip = data.get("public_ip")
-    pkey_path = data.get("pkey_path")
+    pkey_content = data.get("pem_file_content")
+    with open('instance_connect.pem', 'w') as f:
+      f.write(pkey_content)
+    pkey_path = 'instance_connect.pem'
   
   ## Send commands to setup the instance and start fine-tuning
-  with open('./cuda_driver_install.sh', 'r') as f:
-    cuda_driver_commands_txt = f.read()
     
   json_train_data = json.dumps(data.get('training_info'))
   wandb_api_key = data.get('WANDB_API_KEY', '')
@@ -101,10 +102,6 @@ def fine_tune(data: dict):
     "mkdir prompt_dir",
     f"echo '{json_train_data}' > ./prompt_dir/prompt.json",
     "tmux new -d -s fine_tune_session",
-    # Install nvidia drivers
-    #f"tmux send-keys -t fine_tune_session  'echo {cuda_driver_commands_txt} > ./cuda_driver_install.sh' Enter",
-    # "tmux send-keys -t fine_tune_session 'chmod +x ./cuda_driver_install.sh' Enter",
-    # "tmux send-keys -t fine_tune_session './cuda_driver_install.sh' Enter",
     "tmux send-keys -t fine_tune_session 'sudo docker run -e WANDB_API_KEY={wandb_api_key} -v $(pwd)/prompt_dir/:/prompt_dir/ ratna1sambhav/ai_tuners_axolotl_ft:0.1' Enter",
     ]
   #'sudo docker run -v $(pwd):/tuning_app/ ai_tuners_fine_tune_axolotl'
