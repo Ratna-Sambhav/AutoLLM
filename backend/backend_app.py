@@ -105,7 +105,7 @@ def fine_tune(data: dict):
     f"tmux send-keys -t fine_tune_session  'echo {cuda_driver_commands_txt} > ./cuda_driver_install.sh' Enter",
     # "tmux send-keys -t fine_tune_session 'chmod +x ./cuda_driver_install.sh' Enter",
     # "tmux send-keys -t fine_tune_session './cuda_driver_install.sh' Enter",
-    f"tmux send-keys -t fine_tune_session 'sudo docker run -e WANDB_API_KEY={wandb_api_key} -v $(pwd)/model_params/:/tuning_app/ -v $(pwd)/prompt_dir/:/prompt_dir/ ratna1sambhav/ai_tuners_axolotl_ft:0.1' Enter",
+    f"tmux send-keys -t fine_tune_session 'sudo docker run -e WANDB_API_KEY={wandb_api_key} -v $(pwd)/prompt_dir/:/prompt_dir/ ratna1sambhav/ai_tuners_axolotl_ft:0.1' Enter",
     ]
   #'sudo docker run -v $(pwd):/tuning_app/ ai_tuners_fine_tune_axolotl'
   stdout = send_cmd_pem(public_ip, username, pkey_path, command_list)  
