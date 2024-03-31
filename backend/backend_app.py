@@ -87,8 +87,10 @@ def fine_tune(data: dict):
     "sudo apt install -y docker.io",
     "sudo systemctl start docker && sudo systemctl enable docker",
     f"echo {json_data} > ./prompt.json",
-    "sudo docker run -v $(pwd):/tuning_app/ ai_tuners_fine_tune_axolotl"
+    "sudo tmux new -d -s rag_session",
+    "sudo tmux send-keys -t fine_tune_session 'sudo docker run -v $(pwd):/tuning_app/ ai_tuners_fine_tune_axolotl' Enter",
     ]
+  #'sudo docker run -v $(pwd):/tuning_app/ ai_tuners_fine_tune_axolotl'
   stdout = send_cmd_pem(public_ip, username, pkey_path, command_list)  
   
   return {"Logs": stdout, "Instructions": f"Your API has been deployed on the ec2 instance. Use {public_ip} to send your requests. Use /connects3/ endpoint to send your s3 bucket 'bucket_name', access key 'access_key_id' and secret access key 'secret_access_key' of the IAM Role that has full access to the s3 bucket and folder name 'folder_name' inside the s3 bucket which you want to ask questions on."}
