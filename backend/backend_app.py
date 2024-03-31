@@ -1,6 +1,7 @@
 from ec2_functions import create_ec2_instance, send_cmd_pem
 from fastapi import FastAPI
 import requests
+import random
 import time
 
 app = FastAPI()
@@ -22,7 +23,8 @@ def deploy_rag(data: dict):
       "secret_access_key":secret_access_key,
       "ebs_volume":ebs_volume, 
       "instance_type":instance_type, 
-      "instance_category":instance_category
+      "instance_category":instance_category,
+      "instance_name": "deployed_llm_"+str(random.randint(1, 10000))
       })
   else:
     public_ip = data.get("public_ip")
@@ -66,13 +68,14 @@ def fine_tune(data: dict):
     instance_type = data.get('instance_type', 't2.micro')
     instance_category = data.get('instance_category', 'spot')
 
-    instance_id, public_ip, pkey_path = create_ec2_instance({
+    instance_id, public_ip, public_dns, pkey_path = create_ec2_instance({
       "region_name":region_name, 
       "access_key":access_key, 
       "secret_access_key":secret_access_key,
       "ebs_volume":ebs_volume, 
       "instance_type":instance_type, 
-      "instance_category":instance_category
+      "instance_category":instance_category,
+      "instance_name": "fine_tune_"+str(random.randint(1, 10000))
       })
   else:
     public_ip = data.get("public_ip")
